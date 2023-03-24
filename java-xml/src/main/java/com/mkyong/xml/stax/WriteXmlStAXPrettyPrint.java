@@ -24,8 +24,8 @@ public class WriteXmlStAXPrettyPrint {
             // write XML to ByteArrayOutputStream
             writeXml(out);
 
-            // Java 10
-            String xml = out.toString(StandardCharsets.UTF_8);
+            // Java 10 - set java level back to 11 for this
+            String xml = ""; // out.toString(StandardCharsets.UTF_8);
 
             // standard way to convert byte array to String
             // String xml = new String(out.toByteArray(), StandardCharsets.UTF_8);

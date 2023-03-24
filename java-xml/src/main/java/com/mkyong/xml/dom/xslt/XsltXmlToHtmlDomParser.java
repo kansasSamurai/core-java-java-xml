@@ -1,7 +1,15 @@
 package com.mkyong.xml.dom.xslt;
 
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -12,7 +20,9 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import java.io.*;
+
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
 // XML -> XSLT -> Other formats
 public class XsltXmlToHtmlDomParser {
@@ -32,7 +42,7 @@ public class XsltXmlToHtmlDomParser {
 
             // transform xml to html via a xslt file
             try (FileOutputStream output =
-                         new FileOutputStream("c:\\test\\staff.html")) {
+                         new FileOutputStream("c:\\dev\\test\\staff.html")) {
                 transform(doc, output);
             }
 
@@ -55,4 +65,12 @@ public class XsltXmlToHtmlDomParser {
 
     }
 
+    private static Map<String,String> createMap(String string) {
+        Map<String,String> m = new HashMap<>();
+        m.put("strand", string+"-strand");
+        m.put("other", string+"-other");
+        return m;
+    }
+
 }
+

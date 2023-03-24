@@ -24,7 +24,7 @@ public class ConvertPropertiesToXml {
                      new FileOutputStream("c:\\test\\server-config.xml")) {
 
             // convert the properties to an XML file
-            props.storeToXML(output, "Server config file", StandardCharsets.UTF_8);
+            //props.storeToXML(output, "Server config file", StandardCharsets.UTF_8);
 
         }
 
