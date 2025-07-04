@@ -54,6 +54,7 @@ public class XsltUsingListParameter {
 
     private static final String XML_FILENAME = "src/main/resources/staff-simple.xml";
     private static final String XSLT_FILENAME = "src/main/resources/xslt/staff-xml-template.xslt";
+    private static final String HTML_FILENAME = "c:\\dev\\test\\staff.html";
     // The following is the old/original version that uses 1.0/<html>
     // private static final String XSLT_FILENAME = "src/main/resources/xslt/staff-xml-html.xslt";
 
@@ -68,8 +69,7 @@ public class XsltUsingListParameter {
             Document doc = db.parse(is);
 
             // transform xml to html via a xslt file
-            try (FileOutputStream output =
-                         new FileOutputStream("c:\\dev\\test\\staff.html")) {
+            try (FileOutputStream output = new FileOutputStream(HTML_FILENAME)) {
                 transform(doc, output);
             }
 
@@ -92,13 +92,19 @@ public class XsltUsingListParameter {
         a.property = b;
         b.property = list;
 
-        String p = System.getProperty( "javax.xml.transform.TransformerFactory");
-        System.out.println(p);
+        String javaVersion = System.getProperty("java.version");
+        System.out.println("Java Version (System Property) :: " + javaVersion);
 
+        String p = System.getProperty( "javax.xml.transform.TransformerFactory");
+        System.out.println("System Property javax.xml.transform.TransformerFactory :: " + p);
+
+        // org.apache.xalan.processor.TransformerFactoryImpl 
+        // ...\.m2\repository\xalan\xalan\2.6.0\xalan-2.6.0.jar\META-INF\services\
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        System.out.println("TransformerFactoryImpl :: " + transformerFactory.getClass().getCanonicalName());
 
         // add XSLT
-        Transformer transformer = transformerFactory.newTransformer( new StreamSource(new File(XSLT_FILENAME) ));
+        Transformer transformer = transformerFactory.newTransformer(new StreamSource(new File(XSLT_FILENAME) ));
         transformer.setParameter("topobject", mapa);
 //        transformer.setParameter("topobject", list); // this works generally but we want to test the map
 

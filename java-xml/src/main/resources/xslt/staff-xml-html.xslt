@@ -7,9 +7,14 @@
     xmlns:mymap="http://www.oracle.com/XSL/Transform/java/com.mkyong.xml.dom.xslt.XsltUsingListParameter"
     extension-element-prefixes="map"
 >
-<!-- This version of the .xslt (XSL) file works with the builtin
-     xalan TransformerFactory (com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl)
-     but does not work when using FOP/org.apache.xalan.
+<!-- This version of the .xslt (XSL) file works with the builtin xalan TransformerFactory:
+         > com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl
+     but does not work when using FOP/org.apache.xalan:
+         > org.apache.xalan.processor.TransformerFactoryImpl
+         
+     Use this template with XsltXmlToHtmlDomParser.
+     Reminder:  Most current development is actually in the following class:
+     XsltXmlToHtmlDomParser
  -->
 
     <body style="font-size:12pt;color:#FFFFFF;background-color:#0A0A0A">

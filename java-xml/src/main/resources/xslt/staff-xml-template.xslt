@@ -8,7 +8,8 @@
     extension-element-prefixes="map"
 >
 <!-- UNDER DEVELOPMENT
-This supercedes -html.xslt and attempts to use stylesheet and map
+This supercedes -html.xslt and attempts to use stylesheet and map.
+Run with: XsltUsingListParameter
  -->
 
     <xsl:param name="topobject" />
@@ -17,17 +18,19 @@ This supercedes -html.xslt and attempts to use stylesheet and map
     <html>
     <body style="font-size:12pt;color:#FFFFFF;background-color:#0A0A0A">
     <h1 style="font-size:20pt;color:#FF0000">Hello World DOM + XML + XSLT</h1>
+
+    <h3>H3 - select="company/staff"</h3>
     <xsl:for-each select="company/staff">
         <ul>
             <li>
-                <xsl:value-of select="@id"/> -
+                <xsl:value-of select="@id"/> ::
                 <xsl:value-of select="name"/> -
                 <xsl:value-of select="role"/>
             </li>
         </ul>
     </xsl:for-each>
 
-    <h3>H3 - $topobject is a map</h3>
+    <h3>H3 - select="$topobject" (which )is a map)</h3>
     <xsl:value-of select="$topobject"/>
 
     <h3>H3 - map::get()</h3>
@@ -44,7 +47,7 @@ This supercedes -html.xslt and attempts to use stylesheet and map
     </xsl:template>
 
     <xsl:template match="some">
-          $> <xsl:value-of select="."/> 
+          $>> <xsl:value-of select="."/> 
     </xsl:template>
 
 </xsl:stylesheet>
